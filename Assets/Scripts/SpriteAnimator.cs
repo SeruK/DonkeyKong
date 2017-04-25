@@ -9,6 +9,12 @@ public sealed class SpriteAnimator : MonoBehaviour
 	#region Types
 	#region Serialized Types
 #pragma warning disable 0649
+	[Serializable]
+	class Animation
+	{
+		public string name;
+		public Sprite[] sprites;
+	}
 #pragma warning restore 0649
 	#endregion // Serialized Types
 	#endregion // Types
@@ -18,8 +24,12 @@ public sealed class SpriteAnimator : MonoBehaviour
 #pragma warning disable 0649
 	[SerializeField]
 	SpriteRenderer rend;
-	#pragma warning restore 0649
+	[SerializeField]
+	Animation[] anims;
+#pragma warning restore 0649
 	#endregion // Serialized Fields
+
+	Dictionary<string, Animation> nameToAnim;
 	#endregion // Fields
 
 	#region Properties
@@ -29,5 +39,8 @@ public sealed class SpriteAnimator : MonoBehaviour
 	#endregion // Mono
 
 	#region Methods
+	void UpdateAnimDict()
+	{
+	}
 	#endregion // Methods
 }

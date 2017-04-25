@@ -161,23 +161,25 @@ public partial class NestedPrefab : MonoBehaviour
 			result: queue
 		);
 
-		// Remove all NestedPrefab that shares the
-		// same prefab (this includes the prefab itself
-		// and any child that may be nested)
-		for(int i = queue.Count - 1; i >= 0; --i)
-		{
-			NestedPrefab iter = queue[i];
-			if(iter.prefab == prefabInstance.prefab)
-			{
-				Dbg.LogErrorIf(
-					iter != prefabInstance,
-					iter,
-					"{0} was already instantiated in this hierarchy. It will not be instantiated to avoid recursion.",
-					iter.prefab
-				);
-				queue.RemoveAt(i);
-			}
-		}
+		queue.Remove(prefabInstance);
+		// TODO: Fix this
+		//// Remove all NestedPrefab that shares the
+		//// same prefab (this includes the prefab itself
+		//// and any child that may be nested)
+		//for(int i = queue.Count - 1; i >= 0; --i)
+		//{
+		//	NestedPrefab iter = queue[i];
+		//	if(iter.prefab == prefabInstance.prefab)
+		//	{
+		//		Dbg.LogErrorIf(
+		//			iter != prefabInstance,
+		//			iter,
+		//			"{0} was already instantiated in this hierarchy. It will not be instantiated to avoid recursion.",
+		//			iter.prefab
+		//		);
+		//		queue.RemoveAt(i);
+		//	}
+		//}
 	}
 
 	protected void Setup()

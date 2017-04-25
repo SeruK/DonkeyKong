@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 50844833500454722}
   - component: {fileID: 114141423369932710}
   - component: {fileID: 114741219225888964}
+  - component: {fileID: 114070057991999656}
   m_Layer: 0
   m_Name: DonkeyKong_pf
   m_TagString: Untagged
@@ -107,6 +108,27 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+--- !u!114 &114070057991999656
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1052931094425064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e856d301ec8e2240b639f7e1fe9bc94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elements:
+    controller: {fileID: 114141423369932710}
+    animator: {fileID: 114741219225888964}
+  stats:
+    moveSpeed: 3
+    moveAcc: 1
+    moveDec: 1
+    gravityScale: 1
+  state:
+    velocity: {x: 0, y: 0}
 --- !u!114 &114141423369932710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -169,6 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rend: {fileID: 212431074099658782}
+  anims: []
 --- !u!212 &212431074099658782
 SpriteRenderer:
   m_ObjectHideFlags: 1
