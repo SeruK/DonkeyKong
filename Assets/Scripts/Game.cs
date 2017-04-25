@@ -42,6 +42,8 @@ public sealed partial class Game : GameBase
 	public override void AtUpdate()
 	{
 		player.DoUpdate();
+
+		SpriteAnimator.SystemUpdate();
 	}
 	#endregion // Methods
 }

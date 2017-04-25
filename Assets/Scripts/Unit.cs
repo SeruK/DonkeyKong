@@ -34,8 +34,25 @@ public sealed class Unit : MonoBehaviour
 	[Serializable]
 	class State
 	{
-		public Vector2 velocity;
-		public bool grounded;
+		public class Persistent
+		{
+			public Vector2 velocity;
+			public bool grounded;
+			public int direction = 1;
+		}
+
+		public class Momentary
+		{
+			public bool jumped;
+
+			public void Reset()
+			{
+				jumped = false;
+			}
+		}
+
+		public Persistent persistent = new Persistent();
+		public Momentary momentary = new Momentary();
 	}
 #pragma warning restore 0649
 	#endregion // Serialized Types
@@ -65,6 +82,14 @@ public sealed class Unit : MonoBehaviour
 	#region Methods
 	public void DoUpdate()
 	{
+		state.momentary.Reset();
+
+		UpdateMovement();
+		UpdateAnimation();
+	}
+
+	void UpdateMovement()
+	{
 		Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 		bool jump = Input.GetButtonDown("Jump");
 
@@ -72,42 +97,70 @@ public sealed class Unit : MonoBehaviour
 		{
 			int sign = Math.Sign(input.x);
 
-			if(sign == 1 && state.velocity.x < stats.moveSpeed)
+			state.persistent.direction = sign;
+
+			if(sign == 1 && state.persistent.velocity.x < stats.moveSpeed)
 			{
 				float diffX = input.x * stats.moveAcc * Time.deltaTime;
-				state.velocity.x += diffX;
+				state.persistent.velocity.x += diffX;
 			}
-			else if(sign == -1 && state.velocity.x > -stats.moveSpeed)
+			else if(sign == -1 && state.persistent.velocity.x > -stats.moveSpeed)
 			{
 				float diffX = input.x * stats.moveAcc * Time.deltaTime;
-				state.velocity.x += diffX;
+				state.persistent.velocity.x += diffX;
 			}
 		}
 		else
 		{
 			float diffX = stats.moveDec * Time.deltaTime;
-			if(diffX > Mathf.Abs(state.velocity.x))
+			if(diffX > Mathf.Abs(state.persistent.velocity.x))
 			{
-				state.velocity.x = 0.0f;
+				state.persistent.velocity.x = 0.0f;
 			}
 			else
 			{
-				state.velocity.x = -Mathf.Sign(state.velocity.x) * diffX;
+				state.persistent.velocity.x = -Mathf.Sign(state.persistent.velocity.x) * diffX;
 			}
 		}
 
-		state.velocity += (Physics2D.gravity * Time.deltaTime) * stats.gravityScale;
+		state.persistent.velocity += (Physics2D.gravity * Time.deltaTime) * stats.gravityScale;
 
-		if(jump)
+		if(jump && state.persistent.grounded)
 		{
-			state.velocity.y += stats.jumpStrength;
+			state.momentary.jumped = true;
+			state.persistent.velocity.y += stats.jumpStrength;
 		}
 
-		elements.controller.move(state.velocity * Time.deltaTime);
+		elements.controller.move(state.persistent.velocity * Time.deltaTime);
 
-		state.grounded = elements.controller.isGrounded;
+		state.persistent.grounded = elements.controller.isGrounded;
 
-		if(state.grounded) { state.velocity.y = 0.0f; }
+		if(state.persistent.grounded) { state.persistent.velocity.y = 0.0f; }
+	}
+
+	void UpdateAnimation()
+	{
+		SpriteAnimator anim = elements.animator;
+
+		if(state.momentary.jumped)
+		{
+			anim.PlayAnimation("Jump");
+		}
+
+		if(!state.persistent.grounded)
+		{
+			anim.SetDefaultAnimation("Fall");
+		}
+		else if(Mathf.Abs(state.persistent.velocity.x) > 0.0f)
+		{
+			anim.SetDefaultAnimation("Run");
+		}
+		else
+		{
+			anim.SetDefaultAnimation("Idle");
+		}
+
+		anim.SetDirection(state.persistent.direction);
 	}
 	#endregion // Methods
 }

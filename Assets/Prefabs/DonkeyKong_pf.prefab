@@ -123,12 +123,11 @@ MonoBehaviour:
     controller: {fileID: 114141423369932710}
     animator: {fileID: 114741219225888964}
   stats:
-    moveSpeed: 3
-    moveAcc: 1
-    moveDec: 1
+    moveSpeed: 5
+    moveAcc: 30
+    moveDec: 15
     gravityScale: 1
-  state:
-    velocity: {x: 0, y: 0}
+    jumpStrength: 7
 --- !u!114 &114141423369932710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -191,7 +190,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rend: {fileID: 212431074099658782}
-  anims: []
+  playAutomatically: Idle
+  fps: 12
+  anims:
+  - name: Idle
+    looping: 1
+    sprites:
+    - {fileID: 21300000, guid: 58ff345f88959cb4a9da5420dcb4ac79, type: 3}
+    - {fileID: 21300002, guid: 58ff345f88959cb4a9da5420dcb4ac79, type: 3}
+    - {fileID: 21300004, guid: 58ff345f88959cb4a9da5420dcb4ac79, type: 3}
+    - {fileID: 21300006, guid: 58ff345f88959cb4a9da5420dcb4ac79, type: 3}
+    - {fileID: 21300008, guid: 58ff345f88959cb4a9da5420dcb4ac79, type: 3}
+    - {fileID: 21300010, guid: 58ff345f88959cb4a9da5420dcb4ac79, type: 3}
+    - {fileID: 21300012, guid: 58ff345f88959cb4a9da5420dcb4ac79, type: 3}
+    - {fileID: 21300014, guid: 58ff345f88959cb4a9da5420dcb4ac79, type: 3}
+    - {fileID: 21300016, guid: 58ff345f88959cb4a9da5420dcb4ac79, type: 3}
+    - {fileID: 21300018, guid: 58ff345f88959cb4a9da5420dcb4ac79, type: 3}
+    - {fileID: 21300020, guid: 58ff345f88959cb4a9da5420dcb4ac79, type: 3}
+  - name: Run
+    looping: 1
+    sprites:
+    - {fileID: 21300000, guid: f6be5f5be454c8e48bae58536daaad19, type: 3}
+    - {fileID: 21300002, guid: f6be5f5be454c8e48bae58536daaad19, type: 3}
+    - {fileID: 21300004, guid: f6be5f5be454c8e48bae58536daaad19, type: 3}
+    - {fileID: 21300006, guid: f6be5f5be454c8e48bae58536daaad19, type: 3}
+    - {fileID: 21300008, guid: f6be5f5be454c8e48bae58536daaad19, type: 3}
+    - {fileID: 21300010, guid: f6be5f5be454c8e48bae58536daaad19, type: 3}
+    - {fileID: 21300012, guid: f6be5f5be454c8e48bae58536daaad19, type: 3}
+    - {fileID: 21300014, guid: f6be5f5be454c8e48bae58536daaad19, type: 3}
+    - {fileID: 21300016, guid: f6be5f5be454c8e48bae58536daaad19, type: 3}
+    - {fileID: 21300018, guid: f6be5f5be454c8e48bae58536daaad19, type: 3}
+    - {fileID: 21300020, guid: f6be5f5be454c8e48bae58536daaad19, type: 3}
+    - {fileID: 21300022, guid: f6be5f5be454c8e48bae58536daaad19, type: 3}
+    - {fileID: 21300024, guid: f6be5f5be454c8e48bae58536daaad19, type: 3}
+    - {fileID: 21300026, guid: f6be5f5be454c8e48bae58536daaad19, type: 3}
+    - {fileID: 21300028, guid: f6be5f5be454c8e48bae58536daaad19, type: 3}
+    - {fileID: 21300030, guid: f6be5f5be454c8e48bae58536daaad19, type: 3}
+    - {fileID: 21300032, guid: f6be5f5be454c8e48bae58536daaad19, type: 3}
+    - {fileID: 21300034, guid: f6be5f5be454c8e48bae58536daaad19, type: 3}
+    - {fileID: 21300036, guid: f6be5f5be454c8e48bae58536daaad19, type: 3}
+    - {fileID: 21300038, guid: f6be5f5be454c8e48bae58536daaad19, type: 3}
+  - name: Jump
+    looping: 0
+    sprites:
+    - {fileID: 21300006, guid: ed34fd9b52cdb7e46b72b1f4bd9525da, type: 3}
+    - {fileID: 21300006, guid: ed34fd9b52cdb7e46b72b1f4bd9525da, type: 3}
+    - {fileID: 21300006, guid: ed34fd9b52cdb7e46b72b1f4bd9525da, type: 3}
+  - name: Fall
+    looping: 1
+    sprites:
+    - {fileID: 21300008, guid: ed34fd9b52cdb7e46b72b1f4bd9525da, type: 3}
 --- !u!212 &212431074099658782
 SpriteRenderer:
   m_ObjectHideFlags: 1

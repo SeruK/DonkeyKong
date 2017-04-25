@@ -145,6 +145,8 @@ public sealed partial class Game : GameBase
 
 		SetupSystems();
 
+		isSetup = true;
+
 		if(onDidSetupSystems != null) { onDidSetupSystems(); }
 
 		restoreResult = RestoreSystems();
