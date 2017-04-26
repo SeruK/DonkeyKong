@@ -104,7 +104,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4389217949619824, guid: 95c432620b00bee49b221df31607c6cb, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.2
+      value: 1.14
       objectReference: {fileID: 0}
     - target: {fileID: 4389217949619824, guid: 95c432620b00bee49b221df31607c6cb, type: 2}
       propertyPath: m_LocalPosition.z
@@ -130,12 +130,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1198850425873510, guid: 95c432620b00bee49b221df31607c6cb, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 81994584821280560, guid: 95c432620b00bee49b221df31607c6cb, type: 2}
+    - target: {fileID: 114974127349121984, guid: 95c432620b00bee49b221df31607c6cb,
+        type: 2}
+      propertyPath: followUnit
+      value: 
+      objectReference: {fileID: 1734214263}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 95c432620b00bee49b221df31607c6cb, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &270816804
@@ -193,6 +193,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bc6d6a310de362f4e94780b2e387bc33, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &502159174 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114974127349121984, guid: 95c432620b00bee49b221df31607c6cb,
+    type: 2}
+  m_PrefabInternal: {fileID: 155710848}
+  m_Script: {fileID: 11500000, guid: 306afec23cf70fe4286b6c30d0bc2545, type: 3}
 --- !u!1001 &558447773
 Prefab:
   m_ObjectHideFlags: 0
@@ -279,6 +285,16 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 1734214263}
+    - target: {fileID: 114925566014923046, guid: 259fca594cda42944b0b489febbb571f,
+        type: 2}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 8300000, guid: 4cfb65dbed8abf244890bee70b1cd190, type: 3}
+    - target: {fileID: 114925566014923046, guid: 259fca594cda42944b0b489febbb571f,
+        type: 2}
+      propertyPath: cameraManager
+      value: 
+      objectReference: {fileID: 502159174}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 259fca594cda42944b0b489febbb571f, type: 2}
   m_IsPrefabParent: 0

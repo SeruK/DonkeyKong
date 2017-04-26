@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 20761191621327688}
   - component: {fileID: 124104958428643924}
   - component: {fileID: 92256162495868974}
-  - component: {fileID: 81994584821280560}
   m_Layer: 0
   m_Name: BackdropCamera
   m_TagString: Untagged
@@ -42,6 +41,7 @@ GameObject:
   - component: {fileID: 92427543262761546}
   - component: {fileID: 124350585895800846}
   - component: {fileID: 81718303186307142}
+  - component: {fileID: 114974127349121984}
   m_Layer: 0
   m_Name: Camera_pf
   m_TagString: MainCamera
@@ -72,7 +72,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1598309432473580}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -74.99, y: 1.2, z: -10}
+  m_LocalPosition: {x: -74.99, y: 1.14, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4650876044560352}
@@ -181,13 +181,6 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1598309432473580}
   m_Enabled: 1
---- !u!81 &81994584821280560
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1198850425873510}
-  m_Enabled: 1
 --- !u!92 &92256162495868974
 Behaviour:
   m_ObjectHideFlags: 1
@@ -202,6 +195,21 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1598309432473580}
   m_Enabled: 1
+--- !u!114 &114974127349121984
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1598309432473580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306afec23cf70fe4286b6c30d0bc2545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.5
+  min: {x: -74.99, y: 1.14}
+  max: {x: 3.4028235e+38, y: 3.8}
+  followUnit: {fileID: 0}
 --- !u!124 &124104958428643924
 Behaviour:
   m_ObjectHideFlags: 1
