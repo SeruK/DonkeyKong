@@ -53,6 +53,15 @@ public sealed class PickupManager : MonoBehaviour
 	{
 		instance = null;
 	}
+
+	public void Register(Pickup pickup)
+	{
+		pickup.Setup(settings);
+	}
+
+	public void Unregister(Pickup pickup)
+	{
+	}
 	#endregion // System
 	#endregion // Methods
 }

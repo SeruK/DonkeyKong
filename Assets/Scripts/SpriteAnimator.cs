@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UE = UnityEngine;
+using UnityEngine.Serialization;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -35,7 +36,8 @@ public sealed class SpriteAnimator : GameSafeBehaviour
 	#region Serialized Fields
 #pragma warning disable 0649
 	[SerializeField]
-	SpriteRenderer rend;
+	[FormerlySerializedAs("rend")]
+	SpriteRenderer _rend;
 	[SerializeField]
 	string playAutomatically;
 	[SerializeField]
@@ -46,12 +48,18 @@ public sealed class SpriteAnimator : GameSafeBehaviour
 	#endregion // Serialized Fields
 
 	Dictionary<string, AnimationDef> nameToAnim;
+	Dictionary<string, AnimationDef> runtimeAnims = new Dictionary<string, AnimationDef>();
 
 	RuntimeAnim? defaultAnim;
 	RuntimeAnim? overrideAnim;
 	#endregion // Fields
 
 	#region Properties
+	public SpriteRenderer rend
+	{
+		get { return _rend; }
+		private set { _rend = value; }
+	}
 	#endregion // Properties
 
 	#region Mono
@@ -100,6 +108,16 @@ public sealed class SpriteAnimator : GameSafeBehaviour
 		}
 
 	}
+
+	public void AddAnimation(string name, bool looping, Sprite[] sprites)
+	{
+		runtimeAnims[name] = new AnimationDef
+		{
+			name = name,
+			looping = looping,
+			sprites = sprites
+		};
+    }
 	#endregion // Interface
 
 	#region System
@@ -159,6 +177,11 @@ public sealed class SpriteAnimator : GameSafeBehaviour
 	RuntimeAnim? GetAnim(string name)
 	{
 		AnimationDef def = nameToAnim.FindOrNull(name);
+		if(def == null)
+		{
+			def = runtimeAnims.FindOrNull(name);
+		}
+
 		if(def == null) { return null; }
 
 		return new RuntimeAnim
@@ -184,7 +207,7 @@ public sealed class SpriteAnimator : GameSafeBehaviour
 			return;
 		}
 
-		activeAnimators.Add(this);
+        activeAnimators.Add(this);
     }
 
 	protected override void AtDisable()

@@ -14,7 +14,13 @@ public sealed class PickupSettings : ScriptableObject
 	#region Serialized Types
 #pragma warning disable 0649
 	[Serializable]
-	class Sprites : EnumItems<Pickup.Kind, Sprite>
+	class SpriteData
+	{
+		public Sprite[] sprites;
+	}
+
+	[Serializable]
+	class Sprites : EnumItems<Pickup.Kind, SpriteData>
 	{
 #if UNITY_EDITOR
 		[CustomPropertyDrawer(typeof(Sprites))]
@@ -43,9 +49,9 @@ public sealed class PickupSettings : ScriptableObject
 	#endregion // Mono
 
 	#region Methods
-	public Sprite GetSprite(Pickup.Kind kind)
+	public Sprite[] GetSprites(Pickup.Kind kind)
 	{
-		return sprites[kind];
+		return sprites[kind].sprites;
 	}
 	#endregion // Methods
 }
