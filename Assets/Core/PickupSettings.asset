@@ -74,3 +74,10 @@ MonoBehaviour:
       - {fileID: 21300048, guid: 532994d656f775f4fa2807d146aaaf32, type: 3}
     - sprites:
       - {fileID: 21300050, guid: 532994d656f775f4fa2807d146aaaf32, type: 3}
+    - sprites:
+      - {fileID: 21300000, guid: 29d85f988e1a78b4cb54dc3c2440d847, type: 3}
+      - {fileID: 21300002, guid: 29d85f988e1a78b4cb54dc3c2440d847, type: 3}
+      - {fileID: 21300004, guid: 29d85f988e1a78b4cb54dc3c2440d847, type: 3}
+      - {fileID: 21300006, guid: 29d85f988e1a78b4cb54dc3c2440d847, type: 3}
+      - {fileID: 21300008, guid: 29d85f988e1a78b4cb54dc3c2440d847, type: 3}
+      - {fileID: 21300010, guid: 29d85f988e1a78b4cb54dc3c2440d847, type: 3}

@@ -1,17 +1,15 @@
 fileFormatVersion: 2
-guid: 5c14c999169f53c4e98a9c0f8e3d81cc
-timeCreated: 1493236762
+guid: 29d85f988e1a78b4cb54dc3c2440d847
+timeCreated: 1493238584
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Banana_0
-    21300002: Banana_1
-    21300004: Banana_2
-    21300006: Banana_3
-    21300008: Banana_4
-    21300010: Banana_5
-    21300012: Banana_6
-    21300014: Banana_7
+    21300000: BananaBunch_0
+    21300002: BananaBunch_1
+    21300004: BananaBunch_2
+    21300006: BananaBunch_3
+    21300008: BananaBunch_4
+    21300010: BananaBunch_5
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -78,25 +76,38 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Banana_0
+      name: BananaBunch_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 12
-        height: 16
+        width: 19
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Banana_1
+      name: BananaBunch_1
       rect:
         serializedVersion: 2
-        x: 15
+        x: 23
         y: 0
-        width: 8
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BananaBunch_2
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 2
+        width: 21
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -104,78 +115,39 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Banana_2
+      name: BananaBunch_3
       rect:
         serializedVersion: 2
-        x: 26
-        y: 0
-        width: 8
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Banana_3
-      rect:
-        serializedVersion: 2
-        x: 37
-        y: 0
-        width: 12
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Banana_4
-      rect:
-        serializedVersion: 2
-        x: 52
-        y: 0
-        width: 12
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Banana_5
-      rect:
-        serializedVersion: 2
-        x: 68
+        x: 69
         y: 1
-        width: 8
-        height: 15
+        width: 22
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Banana_6
+      name: BananaBunch_4
       rect:
         serializedVersion: 2
-        x: 81
-        y: 1
-        width: 7
-        height: 15
+        x: 94
+        y: 2
+        width: 22
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Banana_7
+      name: BananaBunch_5
       rect:
         serializedVersion: 2
-        x: 90
-        y: 1
-        width: 12
-        height: 15
+        x: 119
+        y: 2
+        width: 23
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
