@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UE = UnityEngine;
+using UnityEngine.Serialization;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,16 +12,7 @@ public sealed class Unit : MonoBehaviour
 	#region Serialized Types
 #pragma warning disable 0649
 	[Serializable]
-	class Elements
-	{
-		[SerializeField]
-		public CharacterController2D controller;
-		[SerializeField]
-		public SpriteAnimator animator;
-	}
-
-	[Serializable]
-	class Stats
+	class Definition
 	{
 		public float moveSpeed = 3.0f;
 		public float moveAcc = 1.0f;
@@ -29,6 +21,20 @@ public sealed class Unit : MonoBehaviour
 		public float gravityScale = 1.0f;
 
 		public float jumpStrength = 10.0f;
+
+		[SerializeField]
+		Vector2 minPos = new Vector2(float.MinValue, float.MinValue);
+		[SerializeField]
+		Vector2 maxPos = new Vector2(float.MaxValue, float.MaxValue);
+	}
+
+	[Serializable]
+	class Elements
+	{
+		[SerializeField]
+		public CharacterController2D controller;
+		[SerializeField]
+		public SpriteAnimator animator;
 	}
 
 	[Serializable]
@@ -39,6 +45,7 @@ public sealed class Unit : MonoBehaviour
 			public Vector2 velocity;
 			public bool grounded;
 			public int direction = 1;
+			public bool canJump;
 		}
 
 		public class Momentary
@@ -64,7 +71,8 @@ public sealed class Unit : MonoBehaviour
 	[SerializeField]
 	Elements elements;
 	[SerializeField]
-	Stats stats;
+	[FormerlySerializedAs("stats")]
+	Definition definition;
 
 	[Space(20.0f)]
 	[SerializeField]
@@ -99,20 +107,20 @@ public sealed class Unit : MonoBehaviour
 
 			state.persistent.direction = sign;
 
-			if(sign == 1 && state.persistent.velocity.x < stats.moveSpeed)
+			if(sign == 1 && state.persistent.velocity.x < definition.moveSpeed)
 			{
-				float diffX = input.x * stats.moveAcc * Time.deltaTime;
+				float diffX = input.x * definition.moveAcc * Time.deltaTime;
 				state.persistent.velocity.x += diffX;
 			}
-			else if(sign == -1 && state.persistent.velocity.x > -stats.moveSpeed)
+			else if(sign == -1 && state.persistent.velocity.x > -definition.moveSpeed)
 			{
-				float diffX = input.x * stats.moveAcc * Time.deltaTime;
+				float diffX = input.x * definition.moveAcc * Time.deltaTime;
 				state.persistent.velocity.x += diffX;
 			}
 		}
 		else
 		{
-			float diffX = stats.moveDec * Time.deltaTime;
+			float diffX = definition.moveDec * Time.deltaTime;
 			if(diffX > Mathf.Abs(state.persistent.velocity.x))
 			{
 				state.persistent.velocity.x = 0.0f;
@@ -123,19 +131,24 @@ public sealed class Unit : MonoBehaviour
 			}
 		}
 
-		state.persistent.velocity += (Physics2D.gravity * Time.deltaTime) * stats.gravityScale;
+		state.persistent.velocity += (Physics2D.gravity * Time.deltaTime) * definition.gravityScale;
 
-		if(jump && state.persistent.grounded)
+		if(jump && state.persistent.canJump)
 		{
 			state.momentary.jumped = true;
-			state.persistent.velocity.y += stats.jumpStrength;
+			state.persistent.canJump = false;
+			state.persistent.velocity.y += definition.jumpStrength;
 		}
 
 		elements.controller.move(state.persistent.velocity * Time.deltaTime);
 
 		state.persistent.grounded = elements.controller.isGrounded;
 
-		if(state.persistent.grounded) { state.persistent.velocity.y = 0.0f; }
+		if(state.persistent.grounded)
+		{
+			state.persistent.canJump = true;
+			state.persistent.velocity.y = 0.0f;
+		}
 	}
 
 	void UpdateAnimation()
