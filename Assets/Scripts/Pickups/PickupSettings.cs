@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UE = UnityEngine;
+using UnityEngine.Serialization;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,16 +15,16 @@ public sealed class PickupSettings : ScriptableObject
 	#region Serialized Types
 #pragma warning disable 0649
 	[Serializable]
-	class SpriteData
+	class InstanceData
 	{
 		public Sprite[] sprites;
 	}
 
 	[Serializable]
-	class Sprites : EnumItems<Pickup.Kind, SpriteData>
+	class InstanceDatas : EnumItems<Pickup.Kind, InstanceData>
 	{
 #if UNITY_EDITOR
-		[CustomPropertyDrawer(typeof(Sprites))]
+		[CustomPropertyDrawer(typeof(InstanceDatas))]
 		class ItemDrawer : Drawer
 		{
 		}
@@ -37,7 +38,8 @@ public sealed class PickupSettings : ScriptableObject
 	#region Serialized Fields
 #pragma warning disable 0649
 	[SerializeField]
-	Sprites sprites;
+	[FormerlySerializedAs("sprites")]
+	InstanceDatas instanceDatas;
 #pragma warning restore 0649
 	#endregion // Serialized Fields
 	#endregion // Fields
@@ -51,7 +53,7 @@ public sealed class PickupSettings : ScriptableObject
 	#region Methods
 	public Sprite[] GetSprites(Pickup.Kind kind)
 	{
-		return sprites[kind].sprites;
+		return instanceDatas[kind].sprites;
 	}
 	#endregion // Methods
 }
