@@ -18,6 +18,10 @@ public sealed partial class Game : GameBase
 #pragma warning disable 0649
 	[SerializeField]
 	Unit player;
+	[SerializeField]
+	AudioClip music;
+	[SerializeField]
+	CameraManager cameraManager;
 #pragma warning restore 0649
 	#endregion // Serialized Fields
 	#endregion // Fields
@@ -31,12 +35,14 @@ public sealed partial class Game : GameBase
 	#region Methods
 	protected override void SetupSystems()
 	{
-		base.SetupSystems();
+		var source = gameObject.AddMissingComponent<AudioSource>();
+		source.loop = true;
+		source.clip = music;
+		source.Play();
 	}
 
 	protected override void ShutdownSystems()
 	{
-		base.ShutdownSystems();
 	}
 
 	public override void AtUpdate()
@@ -44,6 +50,11 @@ public sealed partial class Game : GameBase
 		player.DoUpdate();
 
 		SpriteAnimator.SystemUpdate();
+	}
+
+	public override void AtLateUpdate()
+	{
+		cameraManager.SystemLateUpdate();
 	}
 	#endregion // Methods
 }
