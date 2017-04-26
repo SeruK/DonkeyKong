@@ -23,7 +23,7 @@ public sealed class Pickup : GameSafeBehaviour
 	public enum Kind
 	{
 		Banana,
-		A = 16,
+		A,
 		B,
 		C,
 		D,
@@ -49,6 +49,7 @@ public sealed class Pickup : GameSafeBehaviour
 		X,
 		Y,
 		Z,
+		BananaBunch,
 	}
 	#endregion // Types
 

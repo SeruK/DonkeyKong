@@ -47,7 +47,7 @@ public sealed class SpriteAnimator : GameSafeBehaviour
 #pragma warning restore 0649
 	#endregion // Serialized Fields
 
-	Dictionary<string, AnimationDef> nameToAnim;
+	Dictionary<string, AnimationDef> nameToAnim = new Dictionary<string, AnimationDef>();
 	Dictionary<string, AnimationDef> runtimeAnims = new Dictionary<string, AnimationDef>();
 
 	RuntimeAnim? defaultAnim;

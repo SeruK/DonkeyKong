@@ -50,10 +50,18 @@ public sealed partial class Game : GameBase
 		source.Play();
 
 		pickups = PickupManager.Setup(settings.pickups);
+
+		player.RegisterCallbacks(
+			onTriggerEnter: PlayerCollided
+		);
 	}
 
 	protected override void ShutdownSystems()
 	{
+		player.UnregisterCallbacks(
+			onTriggerEnter: PlayerCollided
+		);
+
 		pickups.Shutdown();
 		pickups = null;
 	}
@@ -68,6 +76,16 @@ public sealed partial class Game : GameBase
 	public override void AtLateUpdate()
 	{
 		cameraManager.SystemLateUpdate();
+	}
+
+	void PlayerCollided(Collider2D coll)
+	{
+		var pickup = coll.GetComponent<Pickup>();
+
+		if(pickup != null)
+		{
+			pickup.gameObject.SetActive(false);
+		}
 	}
 	#endregion // Methods
 }

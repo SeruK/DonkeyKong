@@ -88,6 +88,64 @@ public sealed class Unit : MonoBehaviour
 	#endregion // Mono
 
 	#region Methods
+	#region Controller Callbacks
+	public void RegisterCallbacks(
+        Action<RaycastHit2D> onControllerCollided = null,
+		Action<Collider2D> onTriggerEnter = null,
+		Action<Collider2D> onTriggerStay = null,
+		Action<Collider2D> onTriggerExit = null
+	)
+	{
+		if(onControllerCollided != null)
+		{
+			elements.controller.onControllerCollidedEvent += onControllerCollided;
+		}
+
+		if(onTriggerEnter != null)
+		{
+			elements.controller.onTriggerEnterEvent += onTriggerEnter;
+		}
+
+		if(onTriggerStay != null)
+		{
+			elements.controller.onTriggerStayEvent += onTriggerStay;
+		}
+
+		if(onTriggerExit != null)
+		{
+			elements.controller.onTriggerExitEvent += onTriggerExit;
+		}
+	}
+
+	public void UnregisterCallbacks(
+		Action<RaycastHit2D> onControllerCollided = null,
+		Action<Collider2D> onTriggerEnter = null,
+		Action<Collider2D> onTriggerStay = null,
+		Action<Collider2D> onTriggerExit = null
+	)
+	{
+		if(onControllerCollided != null)
+		{
+			elements.controller.onControllerCollidedEvent -= onControllerCollided;
+		}
+
+		if(onTriggerEnter != null)
+		{
+			elements.controller.onTriggerEnterEvent -= onTriggerEnter;
+		}
+
+		if(onTriggerStay != null)
+		{
+			elements.controller.onTriggerStayEvent -= onTriggerStay;
+		}
+
+		if(onTriggerExit != null)
+		{
+			elements.controller.onTriggerExitEvent -= onTriggerExit;
+		}
+	}
+	#endregion // Controller Callback
+
 	public void DoUpdate()
 	{
 		state.momentary.Reset();
