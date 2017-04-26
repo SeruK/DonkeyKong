@@ -9,6 +9,11 @@ public sealed partial class Game : GameBase
 	#region Types
 	#region Serialized Types
 #pragma warning disable 0649
+	[Serializable]
+	class Settings
+	{
+		public PickupSettings pickups;
+	}
 #pragma warning restore 0649
 	#endregion // Serialized Types
 	#endregion // Types
@@ -17,6 +22,8 @@ public sealed partial class Game : GameBase
 	#region Serialized Fields
 #pragma warning disable 0649
 	[SerializeField]
+	Settings settings;
+	[SerializeField]
 	Unit player;
 	[SerializeField]
 	AudioClip music;
@@ -24,6 +31,8 @@ public sealed partial class Game : GameBase
 	CameraManager cameraManager;
 #pragma warning restore 0649
 	#endregion // Serialized Fields
+
+	PickupManager pickups;
 	#endregion // Fields
 
 	#region Properties
@@ -39,10 +48,14 @@ public sealed partial class Game : GameBase
 		source.loop = true;
 		source.clip = music;
 		source.Play();
+
+		pickups = PickupManager.Setup(settings.pickups);
 	}
 
 	protected override void ShutdownSystems()
 	{
+		pickups.Shutdown();
+		pickups = null;
 	}
 
 	public override void AtUpdate()
