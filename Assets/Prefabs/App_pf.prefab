@@ -63,3 +63,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bcf56a45a69c8244ab8340df2f588b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings:
+    pickups: {fileID: 11400000, guid: 933f70be803d3ad4b98f1124099da695, type: 2}
+  player: {fileID: 0}
+  music: {fileID: 8300000, guid: 4cfb65dbed8abf244890bee70b1cd190, type: 3}
+  cameraManager: {fileID: 0}

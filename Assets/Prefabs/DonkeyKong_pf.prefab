@@ -122,12 +122,14 @@ MonoBehaviour:
   elements:
     controller: {fileID: 114141423369932710}
     animator: {fileID: 114741219225888964}
-  stats:
+  definition:
     moveSpeed: 5
     moveAcc: 30
     moveDec: 15
     gravityScale: 1
     jumpStrength: 7
+    minPos: {x: -3.4028235e+38, y: -3.4028235e+38}
+    maxPos: {x: 3.4028235e+38, y: 3.4028235e+38}
 --- !u!114 &114141423369932710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -149,7 +151,7 @@ MonoBehaviour:
     m_Bits: 0
   oneWayPlatformMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   slopeLimit: 30
   jumpingThreshold: 0.07
   slopeSpeedMultiplier:
