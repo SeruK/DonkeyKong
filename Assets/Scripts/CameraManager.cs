@@ -65,7 +65,7 @@ public sealed class CameraManager : MonoBehaviour
 		targetPos.x = Mathf.Clamp(targetPos.x, min.x, max.x);
 		targetPos.y = Mathf.Clamp(targetPos.y, min.y, max.y);
 
-		transform.position = Vector3.Lerp(transform.position, targetPos, speed);
+		transform.position = Vector3.Lerp(transform.position, targetPos, speed * Time.deltaTime);
 	}
 	#endregion // Methods
 }
