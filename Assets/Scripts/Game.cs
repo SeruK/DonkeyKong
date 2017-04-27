@@ -33,6 +33,7 @@ public sealed partial class Game : GameBase
 	#endregion // Serialized Fields
 
 	PickupManager pickups;
+	SoundManager soundManager;
 	#endregion // Fields
 
 	#region Properties
@@ -42,6 +43,13 @@ public sealed partial class Game : GameBase
 	#endregion // Mono
 
 	#region Methods
+	public void Preinitialize(
+		SoundManager soundManager
+	)
+	{
+		this.soundManager = soundManager;
+	}
+
 	protected override void SetupSystems()
 	{
 		var source = gameObject.AddMissingComponent<AudioSource>();

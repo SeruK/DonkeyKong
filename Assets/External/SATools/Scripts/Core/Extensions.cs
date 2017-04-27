@@ -39,6 +39,64 @@ public static class Extensions
 	}
 	#endregion // Array
 
+	#region List
+	// Stack-like (LIFO)
+	public static void Push<T>(this List<T> list, T item)
+	{
+		list.Add(item);
+	}
+
+	// Stack-like (LIFO)
+	public static T Pop<T>(this List<T> list)
+	{
+		var item = list[list.Count - 1];
+		list.RemoveAt(list.Count - 1);
+		return item;
+	}
+
+	// Queue-like (FIFO)
+	public static void Enqueue<T>(this List<T> list, T item)
+	{
+		list.Add(item);
+	}
+
+	// Queue-like (FIFO)
+	public static T Dequeue<T>(this List<T> list)
+	{
+		var item = list[0];
+		list.RemoveAt(0);
+		return item;
+	}
+
+	public static T RandomItem<T>(this IList<T> list)
+	{
+		if(list.Count == 0)
+		{
+			return default(T);
+		}
+		return list[UE.Random.Range(0, list.Count)];
+	}
+
+	public static T RandomItem<T>(this T[] array)
+	{
+		if(array.Length == 0)
+		{
+			return default(T);
+		}
+		return array[UE.Random.Range(0, array.Length)];
+	}
+
+	public static T TakeRandomItem<T>(this IList<T> list)
+	{
+		if(list.Count == 0) { return default(T); }
+
+		int index = UE.Random.Range(0, list.Count);
+		T val = list[index];
+		list.RemoveAt(index);
+		return val;
+	}
+	#endregion // List
+
 	#region Dictionary
 	public static Value FindOrDefault<Key, Value>(this Dictionary<Key, Value> dictionary, Key key, Value defaultValue)
 	{
