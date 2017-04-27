@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
+[CreateAssetMenu(menuName = "SA/Donkey Kong/Sound")]
 public sealed class Sound : ScriptableObject
 {
 	#region Types
@@ -22,6 +23,8 @@ public sealed class Sound : ScriptableObject
 	public FloatRange volume = new FloatRange(1.0f, 1.0f);
 	[SerializeField]
 	public FloatRange pitch = new FloatRange(1.0f, 1.0f);
+	[SerializeField]
+	public bool loop;
 	#pragma warning restore 0649
 	#endregion // Serialized Fields
 	#endregion // Fields

@@ -44,6 +44,7 @@ public sealed class SoundManager : MonoBehaviour
 		instance = new GameObject("SoundManager").AddComponent<SoundManager>();
 
 		instance.idToSound = new Dictionary<int, SoundInstance>();
+		instance.playingSounds = new List<SoundInstance>();
 
 		instance.idCounter = 0;
 
@@ -53,6 +54,7 @@ public sealed class SoundManager : MonoBehaviour
 
 			sound.source = sound.gameObject.AddComponent<AudioSource>();
 
+			sound.transform.parent = instance.transform;
 			sound.gameObject.SetActive(false);
 			
 			return sound;
@@ -63,6 +65,8 @@ public sealed class SoundManager : MonoBehaviour
 			sound.source.Stop();
 			sound.source.clip = null;
 			sound.id = 0;
+
+			sound.transform.parent = instance.transform;
 
 			sound.gameObject.SetActive(false);
 		};
@@ -91,17 +95,36 @@ public sealed class SoundManager : MonoBehaviour
 	}
 
 	#region Interface
-	public SoundHandle Play(Sound sound, Transform parent = null, Vector3? worldPos = null)
+	public SoundHandle Play(Sound sound, SoundFlag flags, Transform parent = null, Vector3? worldPos = null)
 	{
 		if(sound == null) { return new SoundHandle(); }
+		if(sound.clips.Length == 0) { return new SoundHandle(); }
+
+		if(!sound.loop && 0 == (flags & SoundFlag.OneShot))
+		{
+			Dbg.LogWarnOnce(sound, "Tried to play {0} as one shot", sound);
+			return new SoundHandle();
+		}
+
+		if(sound.loop && 0 == (flags & SoundFlag.Looping))
+		{
+			Dbg.LogWarnOnce(sound, "Tried to play {0} as looping", sound);
+			return new SoundHandle();
+		}
 
 		var sfx = GetSfxInst();
 
 		sfx.sound = sound;
-		sfx.name = sound.name;
-		sfx.gameObject.transform.parent = parent;
+		sfx.name = "SFX_" + sound.name;
+		if(parent != null)
+		{
+			sfx.gameObject.transform.parent = parent;
+		}
 
-		sfx.source.clip = sound.clips.RandomItem();
+		sfx.transform.position = worldPos ?? (parent == null ? Vector3.zero : parent.position);
+
+		sfx.Setup(sound);
+		sfx.source.Play();
 
 		return new SoundHandle(sfx);
 	}
@@ -170,6 +193,7 @@ public sealed class SoundManager : MonoBehaviour
 		var sfx = soundPool.Get();
 		sfx.id = ++idCounter;
 		idToSound[sfx.id] = sfx;
+		playingSounds.Add(sfx);
         sfx.gameObject.SetActive(true);
 		return sfx;
 	}

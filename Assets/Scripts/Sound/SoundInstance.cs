@@ -21,6 +21,12 @@ public struct SoundHandle
 	}
 }
 
+public enum SoundFlag
+{
+	OneShot = 1 << 0,
+	Looping = 1 << 1,
+}
+
 public sealed class SoundInstance : MonoBehaviour
 {
 	#region Types
@@ -56,6 +62,8 @@ public sealed class SoundInstance : MonoBehaviour
 		this.sound = sound;
 		this.volume = sound.volume.GetRandom();
 		this.pitch = sound.pitch.GetRandom();
+
+		this.source.clip = sound.clips.RandomItem();
 
 		SetVolume(1.0f);
 		SetPitch(1.0f);

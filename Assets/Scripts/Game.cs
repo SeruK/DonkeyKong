@@ -29,6 +29,8 @@ public sealed partial class Game : GameBase
 	AudioClip music;
 	[SerializeField]
 	CameraManager cameraManager;
+	[SerializeField]
+	Sound coin;
 #pragma warning restore 0649
 	#endregion // Serialized Fields
 
@@ -93,6 +95,7 @@ public sealed partial class Game : GameBase
 		if(pickup != null)
 		{
 			pickup.gameObject.SetActive(false);
+			soundManager.Play(coin, SoundFlag.OneShot, worldPos: pickup.transform.position);
 		}
 	}
 	#endregion // Methods
