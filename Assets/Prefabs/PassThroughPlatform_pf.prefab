@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4661846303403934}
   - component: {fileID: 61282824563998470}
+  - component: {fileID: 114110378748848600}
   m_Layer: 10
   m_Name: PassThroughPlatform_pf
   m_TagString: Untagged
@@ -54,3 +55,14 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 3, y: 1}
+--- !u!114 &114110378748848600
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1963135486421478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a26ef3e74aa4d824fa78724c70e0e70f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
