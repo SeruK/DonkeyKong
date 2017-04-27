@@ -24,6 +24,8 @@ public sealed partial class Game : GameBase
 	[SerializeField]
 	Settings settings;
 	[SerializeField]
+	GameSounds sounds;
+	[SerializeField]
 	CameraManager cameraManager;
 	[SerializeField]
 	Sound coin;
@@ -35,6 +37,7 @@ public sealed partial class Game : GameBase
 	[NonSerialized]
 	SoundManager soundManager;
 
+	Level level;
 	[NonSerialized]
 	Unit player;
 	#endregion // Fields
@@ -57,7 +60,7 @@ public sealed partial class Game : GameBase
 	{
 		pickups = PickupManager.Setup(settings.pickups);
 
-		var level = FindObjectOfType<Level>();
+		level = FindObjectOfType<Level>();
 
 		Dbg.LogErrorIf(level == null, "No level found");
 
@@ -92,6 +95,8 @@ public sealed partial class Game : GameBase
 
 		pickups.Shutdown();
 		pickups = null;
+
+		level = null;
 	}
 
 	public override void AtUpdate()
@@ -113,6 +118,21 @@ public sealed partial class Game : GameBase
 		if(pickup != null)
 		{
 			pickup.gameObject.SetActive(false);
+			Sound sound = null;
+
+			if(pickup.kind == Pickup.Kind.Banana)
+			{
+				sound = sounds.pickups.banana;
+			}
+			else if(pickup.kind == Pickup.Kind.BananaBunch)
+			{
+				sound = sounds.pickups.bananaBunch;
+			}
+			else
+			{
+				sound = sounds.pickups.letter;
+			}
+
 			soundManager.Play(coin, SoundFlag.OneShot, worldPos: pickup.transform.position);
 		}
 	}
