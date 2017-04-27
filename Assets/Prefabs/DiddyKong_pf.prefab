@@ -54,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1052931094425064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -82.64, y: 5.76, z: 0}
+  m_LocalPosition: {x: -82.38685, y: 5.283222, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4686869401864170}
@@ -221,11 +221,6 @@ MonoBehaviour:
   - name: Run
     looping: 1
     sprites:
-    - {fileID: 21300000, guid: 63d1eaf4b1caad4488ed2ff0bb9c20f3, type: 3}
-    - {fileID: 21300002, guid: 63d1eaf4b1caad4488ed2ff0bb9c20f3, type: 3}
-    - {fileID: 21300004, guid: 63d1eaf4b1caad4488ed2ff0bb9c20f3, type: 3}
-    - {fileID: 21300006, guid: 63d1eaf4b1caad4488ed2ff0bb9c20f3, type: 3}
-    - {fileID: 21300008, guid: 63d1eaf4b1caad4488ed2ff0bb9c20f3, type: 3}
     - {fileID: 21300010, guid: 63d1eaf4b1caad4488ed2ff0bb9c20f3, type: 3}
     - {fileID: 21300012, guid: 63d1eaf4b1caad4488ed2ff0bb9c20f3, type: 3}
     - {fileID: 21300014, guid: 63d1eaf4b1caad4488ed2ff0bb9c20f3, type: 3}
@@ -282,7 +277,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 58ff345f88959cb4a9da5420dcb4ac79, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1791107e5c05c2f45ab0d87c3d221c17, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
