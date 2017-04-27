@@ -14,6 +14,12 @@ public sealed partial class Game : GameBase
 	{
 		public PickupSettings pickups;
 	}
+
+	[Serializable]
+	class Prefabs
+	{
+		public CameraManager camera;
+	}
 #pragma warning restore 0649
 	#endregion // Serialized Types
 	#endregion // Types
@@ -24,11 +30,9 @@ public sealed partial class Game : GameBase
 	[SerializeField]
 	Settings settings;
 	[SerializeField]
+	Prefabs prefabs;
+	[SerializeField]
 	GameSounds sounds;
-	[SerializeField]
-	CameraManager cameraManager;
-	[SerializeField]
-	Sound coin;
 #pragma warning restore 0649
 	#endregion // Serialized Fields
 
@@ -36,6 +40,8 @@ public sealed partial class Game : GameBase
 	PickupManager pickups;
 	[NonSerialized]
 	SoundManager soundManager;
+	[NonSerialized]
+	CameraManager cameraManager;
 
 	Level level;
 	[NonSerialized]
@@ -59,6 +65,13 @@ public sealed partial class Game : GameBase
 	protected override void SetupSystems()
 	{
 		pickups = PickupManager.Setup(settings.pickups);
+
+		cameraManager = FindObjectOfType<CameraManager>();
+
+		if(cameraManager == null)
+		{
+			cameraManager = Instantiate(prefabs.camera);
+		}
 
 		level = FindObjectOfType<Level>();
 
@@ -104,6 +117,11 @@ public sealed partial class Game : GameBase
 		player.DoUpdate();
 
 		SpriteAnimator.SystemUpdate();
+
+		if(Input.GetKey(KeyCode.F12) && level != null)
+		{
+			App.LoadScene(level.nextScene);
+		}
 	}
 
 	public override void AtLateUpdate()
@@ -133,7 +151,7 @@ public sealed partial class Game : GameBase
 				sound = sounds.pickups.letter;
 			}
 
-			soundManager.Play(coin, SoundFlag.OneShot, worldPos: pickup.transform.position);
+			soundManager.Play(sound, SoundFlag.OneShot, worldPos: pickup.transform.position);
 		}
 	}
 	#endregion // Methods

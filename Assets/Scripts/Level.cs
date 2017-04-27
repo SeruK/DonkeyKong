@@ -24,6 +24,8 @@ public sealed class Level : MonoBehaviour
 	public Vector2 minPos = new Vector2(float.MinValue, float.MinValue);
 	[SerializeField]
 	public Vector2 maxPos = new Vector2(float.MaxValue, float.MaxValue);
+	[SerializeField]
+	public string nextScene;
 #pragma warning restore 0649
 	#endregion // Serialized Fields
 	#endregion // Fields

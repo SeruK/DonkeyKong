@@ -1085,7 +1085,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4389217949619824, guid: 95c432620b00bee49b221df31607c6cb, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -74.1
+      value: -66.14
       objectReference: {fileID: 0}
     - target: {fileID: 4389217949619824, guid: 95c432620b00bee49b221df31607c6cb, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2696,6 +2696,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4834327674436832, guid: bc6d6a310de362f4e94780b2e387bc33,
     type: 2}
   m_PrefabInternal: {fileID: 500762458}
+--- !u!114 &502159174 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114974127349121984, guid: 95c432620b00bee49b221df31607c6cb,
+    type: 2}
+  m_PrefabInternal: {fileID: 155710848}
+  m_Script: {fileID: 11500000, guid: 306afec23cf70fe4286b6c30d0bc2545, type: 3}
 --- !u!1001 &503157016
 Prefab:
   m_ObjectHideFlags: 0
@@ -3608,7 +3614,6 @@ MonoBehaviour:
   music: {fileID: 11400000, guid: 8ee6a76afa1754442bd7c4bc3bbceb0d, type: 2}
   minPos: {x: -74.99, y: -1.5}
   maxPos: {x: 74.7, y: 3.8}
-  nextScene: JungleHijinks2
 --- !u!1001 &685509987
 Prefab:
   m_ObjectHideFlags: 0
@@ -5273,15 +5278,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4545093536308398, guid: 259fca594cda42944b0b489febbb571f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -81.05785
       objectReference: {fileID: 0}
     - target: {fileID: 4545093536308398, guid: 259fca594cda42944b0b489febbb571f, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 3.402319
       objectReference: {fileID: 0}
     - target: {fileID: 4545093536308398, guid: 259fca594cda42944b0b489febbb571f, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -11.197314
       objectReference: {fileID: 0}
     - target: {fileID: 4545093536308398, guid: 259fca594cda42944b0b489febbb571f, type: 2}
       propertyPath: m_LocalRotation.x
@@ -5303,6 +5308,22 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114925566014923046, guid: 259fca594cda42944b0b489febbb571f,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1734214263}
+    - target: {fileID: 114925566014923046, guid: 259fca594cda42944b0b489febbb571f,
+        type: 2}
+      propertyPath: cameraManager
+      value: 
+      objectReference: {fileID: 502159174}
+    - target: {fileID: 114925566014923046, guid: 259fca594cda42944b0b489febbb571f,
+        type: 2}
+      propertyPath: sounds
+      value: 
+      objectReference: {fileID: 11400000, guid: e1abcd03a033ac54ea8522e1655364fa,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 259fca594cda42944b0b489febbb571f, type: 2}
   m_IsPrefabParent: 0

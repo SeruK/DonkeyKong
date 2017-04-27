@@ -31,6 +31,13 @@ public sealed partial class App : AppBase
 	#endregion // Fields
 
 	#region Properties
+	protected override string loadingSceneName
+	{
+		get
+		{
+			return "Loading";
+		}
+	}
 	#endregion // Properties
 
 	#region Mono
@@ -39,13 +46,15 @@ public sealed partial class App : AppBase
 	#region Methods
 	protected override void AtSetup()
 	{
-		soundManager = SoundManager.Setup(settings.sound);
+		Child(ref soundManager, SoundManager.Setup(
+			settings.sound
+		));
     }
 
 	protected override void AtShutdown()
 	{
 		soundManager.Shutdown();
-	}
+    }
 
 	protected override void PreinitializeState(AppState appState)
 	{

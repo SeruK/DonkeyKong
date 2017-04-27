@@ -46,6 +46,7 @@ public sealed class SoundInstance : MonoBehaviour
 	public Sound sound;
 	public AudioSource source;
 
+	public float timeLeft;
 	public float volume;
 	public float pitch;
 	#endregion // Fields
@@ -67,6 +68,8 @@ public sealed class SoundInstance : MonoBehaviour
 		this.source.loop = sound.loop;
 
 		this.source.spatialBlend = sound.force2D ? 0.0f : 1.0f;
+
+		timeLeft = sound.loop ? -1.0f : this.source.clip.length;
 
 		SetVolume(1.0f);
 		SetPitch(1.0f);

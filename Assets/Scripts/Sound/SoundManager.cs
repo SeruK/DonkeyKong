@@ -80,10 +80,13 @@ public sealed class SoundManager : MonoBehaviour
 		{
 			var sfx = playingSounds[i];
 
-			if(!sfx.source.isPlaying)
+			if(sfx.timeLeft > 0.0f)
 			{
-				RemoveSound(sfx);
-				continue;
+				sfx.timeLeft -= Time.deltaTime;
+				if(sfx.timeLeft <= 0.0f)
+				{
+					RemoveSound(sfx);
+				}
 			}
 		}
 	}
@@ -165,8 +168,13 @@ public sealed class SoundManager : MonoBehaviour
 		{
 			var sfx = playingSounds[i];
 
-			RemoveSound(sfx);
-		}
+			Destroy(sfx.gameObject);
+
+			soundPool.RemoveUnusable(sfx);
+        }
+
+		playingSounds.Clear();
+		idToSound.Clear();
 	}
 	#endregion // Interface
 

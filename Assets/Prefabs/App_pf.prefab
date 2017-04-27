@@ -35,7 +35,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1851459086546496}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -81.05785, y: 3.402319, z: -11.197314}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -67,7 +67,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
     pickups: {fileID: 11400000, guid: 933f70be803d3ad4b98f1124099da695, type: 2}
-  player: {fileID: 0}
-  music: {fileID: 8300000, guid: 4cfb65dbed8abf244890bee70b1cd190, type: 3}
-  cameraManager: {fileID: 0}
-  coin: {fileID: 11400000, guid: 4eaf296f134721241bd3de045cb87a88, type: 2}
+  prefabs:
+    camera: {fileID: 114974127349121984, guid: 95c432620b00bee49b221df31607c6cb, type: 2}
+  sounds: {fileID: 11400000, guid: e1abcd03a033ac54ea8522e1655364fa, type: 2}
