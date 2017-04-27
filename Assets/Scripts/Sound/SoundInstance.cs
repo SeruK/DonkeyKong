@@ -64,6 +64,7 @@ public sealed class SoundInstance : MonoBehaviour
 		this.pitch = sound.pitch.GetRandom();
 
 		this.source.clip = sound.clips.RandomItem();
+		this.source.loop = sound.loop;
 
 		SetVolume(1.0f);
 		SetPitch(1.0f);

@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
+[CreateAssetMenu(menuName = "SA/Donkey Kong/Sound Settings")]
 public sealed class SoundSettings : ScriptableObject
 {
 	#region Types
