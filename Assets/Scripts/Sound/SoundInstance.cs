@@ -66,6 +66,8 @@ public sealed class SoundInstance : MonoBehaviour
 		this.source.clip = sound.clips.RandomItem();
 		this.source.loop = sound.loop;
 
+		this.source.spatialBlend = sound.force2D ? 0.0f : 1.0f;
+
 		SetVolume(1.0f);
 		SetPitch(1.0f);
 	}

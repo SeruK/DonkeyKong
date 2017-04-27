@@ -24,18 +24,19 @@ public sealed partial class Game : GameBase
 	[SerializeField]
 	Settings settings;
 	[SerializeField]
-	Unit player;
-	[SerializeField]
-	AudioClip music;
-	[SerializeField]
 	CameraManager cameraManager;
 	[SerializeField]
 	Sound coin;
 #pragma warning restore 0649
 	#endregion // Serialized Fields
 
+	[NonSerialized]
 	PickupManager pickups;
+	[NonSerialized]
 	SoundManager soundManager;
+
+	[NonSerialized]
+	Unit player;
 	#endregion // Fields
 
 	#region Properties
@@ -54,12 +55,27 @@ public sealed partial class Game : GameBase
 
 	protected override void SetupSystems()
 	{
-		var source = gameObject.AddMissingComponent<AudioSource>();
-		source.loop = true;
-		source.clip = music;
-		source.Play();
-
 		pickups = PickupManager.Setup(settings.pickups);
+
+		var level = FindObjectOfType<Level>();
+
+		Dbg.LogErrorIf(level == null, "No level found");
+
+		if(level != null)
+		{
+			SetupWithLevel(level);
+		}
+	}
+
+	void SetupWithLevel(Level level)
+	{
+		soundManager.Play(level.music, SoundFlag.Looping);
+
+		player = level.player;
+
+		cameraManager.followUnit = player;
+		cameraManager.min = level.minPos;
+		cameraManager.max = level.maxPos;
 
 		player.RegisterCallbacks(
 			onTriggerEnter: PlayerCollided
@@ -68,6 +84,8 @@ public sealed partial class Game : GameBase
 
 	protected override void ShutdownSystems()
 	{
+		soundManager.Clear();
+
 		player.UnregisterCallbacks(
 			onTriggerEnter: PlayerCollided
 		);

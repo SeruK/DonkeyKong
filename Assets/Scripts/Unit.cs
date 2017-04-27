@@ -21,11 +21,6 @@ public sealed class Unit : MonoBehaviour
 		public float gravityScale = 1.0f;
 
 		public float jumpStrength = 10.0f;
-
-		[SerializeField]
-		Vector2 minPos = new Vector2(float.MinValue, float.MinValue);
-		[SerializeField]
-		Vector2 maxPos = new Vector2(float.MaxValue, float.MaxValue);
 	}
 
 	[Serializable]

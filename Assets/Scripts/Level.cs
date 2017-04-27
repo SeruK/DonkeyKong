@@ -4,8 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-[CreateAssetMenu(menuName = "SA/Donkey Kong/Sound")]
-public sealed class Sound : ScriptableObject
+public sealed class Level : MonoBehaviour
 {
 	#region Types
 	#region Serialized Types
@@ -18,16 +17,14 @@ public sealed class Sound : ScriptableObject
 	#region Serialized Fields
 #pragma warning disable 0649
 	[SerializeField]
-	public AudioClip[] clips;
+	public Unit player;
 	[SerializeField]
-	public FloatRange volume = new FloatRange(1.0f, 1.0f);
+	public Sound music;
 	[SerializeField]
-	public FloatRange pitch = new FloatRange(1.0f, 1.0f);
+	public Vector2 minPos = new Vector2(float.MinValue, float.MinValue);
 	[SerializeField]
-	public bool loop;
-	[SerializeField]
-	public bool force2D;
-	#pragma warning restore 0649
+	public Vector2 maxPos = new Vector2(float.MaxValue, float.MaxValue);
+#pragma warning restore 0649
 	#endregion // Serialized Fields
 	#endregion // Fields
 

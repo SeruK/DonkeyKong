@@ -18,14 +18,16 @@ public sealed class CameraManager : MonoBehaviour
 #pragma warning disable 0649
 	[SerializeField]
 	public float speed = 0.5f;
-	[SerializeField]
-	Vector2 min = new Vector2(float.MinValue, float.MinValue);
-	[SerializeField]
-	Vector2 max = new Vector2(float.MaxValue, float.MaxValue);
+
 #pragma warning restore 0649
 	#endregion // Serialized Fields
 
+	[NonSerialized]
 	public Unit followUnit;
+	[NonSerialized]
+	public Vector2 min = new Vector2(float.MinValue, float.MinValue);
+	[NonSerialized]
+	public Vector2 max = new Vector2(float.MaxValue, float.MaxValue);
 	#endregion // Fields
 
 	#region Properties

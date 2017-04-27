@@ -128,8 +128,6 @@ MonoBehaviour:
     moveDec: 15
     gravityScale: 1
     jumpStrength: 7
-    minPos: {x: -3.4028235e+38, y: -3.4028235e+38}
-    maxPos: {x: 3.4028235e+38, y: 3.4028235e+38}
 --- !u!114 &114141423369932710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -148,7 +146,7 @@ MonoBehaviour:
     m_Bits: 256
   triggerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   oneWayPlatformMask:
     serializedVersion: 2
     m_Bits: 1024
@@ -191,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69ed94f4ac8c81444b12bb2bb4745fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rend: {fileID: 212431074099658782}
+  _rend: {fileID: 212431074099658782}
   playAutomatically: Idle
   fps: 12
   anims:
