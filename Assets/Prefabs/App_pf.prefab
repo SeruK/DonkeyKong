@@ -19,8 +19,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4545093536308398}
-  - component: {fileID: 114925566014923046}
   - component: {fileID: 114556194955823222}
+  - component: {fileID: 114925566014923046}
   m_Layer: 0
   m_Name: App_pf
   m_TagString: Untagged
@@ -52,6 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d8073efb39656640b914b5b6317adc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings:
+    sound: {fileID: 11400000, guid: 00dd7e8fbe815ce4daa8d83ae553c8bc, type: 2}
 --- !u!114 &114925566014923046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -68,3 +70,4 @@ MonoBehaviour:
   player: {fileID: 0}
   music: {fileID: 8300000, guid: 4cfb65dbed8abf244890bee70b1cd190, type: 3}
   cameraManager: {fileID: 0}
+  coin: {fileID: 11400000, guid: 4eaf296f134721241bd3de045cb87a88, type: 2}
