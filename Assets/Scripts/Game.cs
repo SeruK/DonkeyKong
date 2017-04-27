@@ -178,6 +178,11 @@ public sealed partial class Game : GameBase
 
 		if(sceneTrigger != null)
 		{
+			if(sceneTrigger.shouldPreloadMovie)
+			{
+				Movie.shouldBeLoaded = true;
+				Coroutines.StartGlobal(Movie.LoadRoutine());
+			}
 			loadScene = sceneTrigger.sceneName;
 		}
 	}

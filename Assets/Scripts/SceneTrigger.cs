@@ -18,6 +18,8 @@ public sealed class SceneTrigger : MonoBehaviour
 #pragma warning disable 0649
 	[SerializeField]
 	public string sceneName;
+	[SerializeField]
+	public bool shouldPreloadMovie;
 	#pragma warning restore 0649
 	#endregion // Serialized Fields
 	#endregion // Fields

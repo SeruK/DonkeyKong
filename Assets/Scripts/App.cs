@@ -27,6 +27,7 @@ public sealed partial class App : AppBase
 #pragma warning restore 0649
 	#endregion // Serialized Fields
 
+	Coroutines coroutines;
 	SoundManager soundManager;
 	#endregion // Fields
 
@@ -46,6 +47,8 @@ public sealed partial class App : AppBase
 	#region Methods
 	protected override void AtSetup()
 	{
+		Child(ref coroutines, Coroutines.Setup());
+
 		Child(ref soundManager, SoundManager.Setup(
 			settings.sound
 		));
@@ -54,6 +57,7 @@ public sealed partial class App : AppBase
 	protected override void AtShutdown()
 	{
 		soundManager.Shutdown();
+		coroutines.Shutdown();
     }
 
 	protected override void PreinitializeState(AppState appState)
@@ -67,9 +71,21 @@ public sealed partial class App : AppBase
 		}
 	}
 
+	protected override void AtFixedUpdate()
+	{
+		coroutines.SystemFixedUpdate();
+	}
+
 	protected override void AtUpdate()
 	{
 		soundManager.SystemUpdate();
+
+		coroutines.SystemUpdate();
+	}
+
+	protected override void AtPostRender()
+	{
+		coroutines.SystemPostRender();
 	}
 	#endregion // Methods
 }

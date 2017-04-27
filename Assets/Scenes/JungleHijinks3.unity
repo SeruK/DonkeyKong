@@ -997,6 +997,7 @@ MonoBehaviour:
   minPos: {x: -74.99, y: -1.5}
   maxPos: {x: -74.96, y: 3.8}
   background: {fileID: 21300000, guid: e342d39572190154a84ebc3f4c0b0d5a, type: 3}
+  quitWhenMusicEnds: 0
 --- !u!1001 &685509987
 Prefab:
   m_ObjectHideFlags: 0
@@ -1713,7 +1714,7 @@ Prefab:
     - target: {fileID: 114728255872855600, guid: eef62a448b33ab5499ab573cb28e63e7,
         type: 2}
       propertyPath: sceneName
-      value: KongKaveCranky
+      value: Movie
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eef62a448b33ab5499ab573cb28e63e7, type: 2}
@@ -1756,6 +1757,16 @@ Prefab:
     - target: {fileID: 4456066782912000, guid: 37e45ae9f26329046b0a26486bf1eb8a, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114074758660151612, guid: 37e45ae9f26329046b0a26486bf1eb8a,
+        type: 2}
+      propertyPath: shouldPreloadMovie
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114074758660151612, guid: 37e45ae9f26329046b0a26486bf1eb8a,
+        type: 2}
+      propertyPath: sceneName
+      value: Movie
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 37e45ae9f26329046b0a26486bf1eb8a, type: 2}

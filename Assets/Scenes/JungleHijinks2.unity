@@ -4369,6 +4369,7 @@ MonoBehaviour:
   minPos: {x: -74.99, y: -1.5}
   maxPos: {x: 74.7, y: 3.8}
   background: {fileID: 21300000, guid: f53dc0464e1f1f34395b785680955d71, type: 3}
+  quitWhenMusicEnds: 0
 --- !u!1001 &685509987
 Prefab:
   m_ObjectHideFlags: 0
@@ -7039,6 +7040,11 @@ Prefab:
     - target: {fileID: 4456066782912000, guid: 37e45ae9f26329046b0a26486bf1eb8a, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114074758660151612, guid: 37e45ae9f26329046b0a26486bf1eb8a,
+        type: 2}
+      propertyPath: sceneName
+      value: JungleHijinks3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 37e45ae9f26329046b0a26486bf1eb8a, type: 2}

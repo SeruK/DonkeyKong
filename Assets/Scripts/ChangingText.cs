@@ -46,6 +46,7 @@ public sealed class ChangingText : MonoBehaviour
 			if(++index >= texts.Length)
 			{
 				index = 0;
+				Application.Quit();
 			}
 		}
 	}

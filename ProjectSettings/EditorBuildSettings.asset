@@ -15,3 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/KongKaveDonkey.unity
   - enabled: 1
     path: Assets/Scenes/KongKaveDiddy.unity
+  - enabled: 1
+    path: Assets/Scenes/Movie.unity
+  - enabled: 1
+    path: Assets/Scenes/Life.unity

@@ -229,7 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 546706629}
   texts:
-  - Donkey is dead
+  - Donkey Kong is dead
   - Vaporwave is dead
   - Art is dead
   - Gamers are dead
@@ -239,8 +239,8 @@ MonoBehaviour:
   - deathsdynamicshroud.bandcamp.com
   - '@SeruK_'
   interval:
-    min: 1
-    max: 2
+    min: 4
+    max: 4
 --- !u!1001 &1402751967
 Prefab:
   m_ObjectHideFlags: 0

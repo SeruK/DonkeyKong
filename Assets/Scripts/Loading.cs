@@ -57,7 +57,14 @@ public sealed class Loading : MonoBehaviour
 
 		float progress = 0.0f;
 
-		if(App.loadingProgress >= 0.9f && timer <= 0.0f)
+		bool movieDone = true;
+
+		if(Movie.shouldBeLoaded)
+		{
+			movieDone = Movie.texture != null;
+		}
+
+		if(App.loadingProgress >= 0.9f && timer <= 0.0f && movieDone)
 		{
 			if(glitchTimer >= 0.0f)
 			{
