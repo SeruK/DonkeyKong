@@ -18,7 +18,8 @@ public sealed class CameraManager : MonoBehaviour
 #pragma warning disable 0649
 	[SerializeField]
 	public float speed = 0.5f;
-
+	[SerializeField]
+	public SpriteRenderer backgroundRend;
 #pragma warning restore 0649
 	#endregion // Serialized Fields
 

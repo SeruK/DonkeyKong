@@ -46,6 +46,8 @@ public sealed partial class Game : GameBase
 	Level level;
 	[NonSerialized]
 	Unit player;
+	[NonSerialized]
+	string loadScene;
 	#endregion // Fields
 
 	#region Properties
@@ -93,9 +95,13 @@ public sealed partial class Game : GameBase
 		cameraManager.min = level.minPos;
 		cameraManager.max = level.maxPos;
 
+		cameraManager.backgroundRend.sprite = level.background;
+
 		player.RegisterCallbacks(
 			onTriggerEnter: PlayerCollided
 		);
+
+		player.SetDirection(level.startDir);
 	}
 
 	protected override void ShutdownSystems()
@@ -118,11 +124,13 @@ public sealed partial class Game : GameBase
 
 		SpriteAnimator.SystemUpdate();
 
-		if(Input.GetKey(KeyCode.F12) && level != null)
+		if(loadScene != null)
 		{
-			App.LoadScene(level.nextScene);
+			string load = loadScene;
+			loadScene = null;
+			App.LoadScene(load);
 		}
-	}
+    }
 
 	public override void AtLateUpdate()
 	{
@@ -152,6 +160,13 @@ public sealed partial class Game : GameBase
 			}
 
 			soundManager.Play(sound, SoundFlag.OneShot, worldPos: pickup.transform.position);
+		}
+
+		var sceneTrigger = coll.GetComponent<SceneTrigger>();
+
+		if(sceneTrigger != null)
+		{
+			loadScene = sceneTrigger.sceneName;
 		}
 	}
 	#endregion // Methods

@@ -3605,10 +3605,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1734214263}
+  startDir: 1
   music: {fileID: 11400000, guid: 8ee6a76afa1754442bd7c4bc3bbceb0d, type: 2}
   minPos: {x: -74.99, y: -1.5}
   maxPos: {x: 74.7, y: 3.8}
-  nextScene: JungleHijinks2
+  background: {fileID: 21300000, guid: f53dc0464e1f1f34395b785680955d71, type: 3}
 --- !u!1001 &685509987
 Prefab:
   m_ObjectHideFlags: 0

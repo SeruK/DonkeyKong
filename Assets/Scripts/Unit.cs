@@ -141,6 +141,11 @@ public sealed class Unit : MonoBehaviour
 	}
 	#endregion // Controller Callback
 
+	public void SetDirection(int dir)
+	{
+		state.persistent.direction = dir;
+	}
+
 	public void DoUpdate()
 	{
 		state.momentary.Reset();

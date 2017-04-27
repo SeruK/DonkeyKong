@@ -11,3 +11,7 @@ EditorBuildSettings:
     path: Assets/Scenes/JungleHijinks2.unity
   - enabled: 1
     path: Assets/Scenes/Loading.unity
+  - enabled: 1
+    path: Assets/Scenes/KongKaveDonkey.unity
+  - enabled: 1
+    path: Assets/Scenes/KongKaveDiddy.unity

@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4524868255231088}
   - component: {fileID: 61477697941627126}
+  - component: {fileID: 114728255872855600}
   m_Layer: 11
   m_Name: CongCave_pf
   m_TagString: KongCave
@@ -54,3 +55,15 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+--- !u!114 &114728255872855600
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479669794399800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e44a5f0f263b2b4cab81328b299b5b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: KongKaveDonkey
