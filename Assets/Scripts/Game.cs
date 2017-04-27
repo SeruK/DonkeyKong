@@ -48,6 +48,8 @@ public sealed partial class Game : GameBase
 	Unit player;
 	[NonSerialized]
 	string loadScene;
+	[NonSerialized]
+	SoundHandle musicSfx;
 	#endregion // Fields
 
 	#region Properties
@@ -87,7 +89,7 @@ public sealed partial class Game : GameBase
 
 	void SetupWithLevel(Level level)
 	{
-		soundManager.Play(level.music, SoundFlag.Looping);
+		musicSfx = soundManager.Play(level.music, SoundFlag.Looping);
 
 		player = level.player;
 
@@ -97,20 +99,27 @@ public sealed partial class Game : GameBase
 
 		cameraManager.backgroundRend.sprite = level.background;
 
-		player.RegisterCallbacks(
-			onTriggerEnter: PlayerCollided
-		);
+		if(player != null)
+		{
+			player.RegisterCallbacks(
+				onTriggerEnter: PlayerCollided
+			);
 
-		player.SetDirection(level.startDir);
+			player.SetDirection(level.startDir);
+		}
 	}
 
 	protected override void ShutdownSystems()
 	{
-		soundManager.Clear();
+		musicSfx = new SoundHandle();
+        soundManager.Clear();
 
-		player.UnregisterCallbacks(
-			onTriggerEnter: PlayerCollided
-		);
+		if(player != null)
+		{
+			player.UnregisterCallbacks(
+				onTriggerEnter: PlayerCollided
+			);
+		}
 
 		pickups.Shutdown();
 		pickups = null;
@@ -120,7 +129,10 @@ public sealed partial class Game : GameBase
 
 	public override void AtUpdate()
 	{
-		player.DoUpdate();
+		if(player != null)
+		{
+			player.DoUpdate();
+		}
 
 		SpriteAnimator.SystemUpdate();
 

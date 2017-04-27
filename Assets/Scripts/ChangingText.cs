@@ -4,7 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public sealed class Level : MonoBehaviour
+public sealed class ChangingText : MonoBehaviour
 {
 	#region Types
 	#region Serialized Types
@@ -17,27 +17,38 @@ public sealed class Level : MonoBehaviour
 	#region Serialized Fields
 #pragma warning disable 0649
 	[SerializeField]
-	public Unit player;
+	TextMesh text;
 	[SerializeField]
-	public int startDir = 1;
+	string[] texts;
 	[SerializeField]
-	public Sound music;
-	[SerializeField]
-	public Vector2 minPos = new Vector2(float.MinValue, float.MinValue);
-	[SerializeField]
-	public Vector2 maxPos = new Vector2(float.MaxValue, float.MaxValue);
-	[SerializeField]
-	public Sprite background;
-	[SerializeField]
-	public bool quitWhenMusicEnds;
+	FloatRange interval = new FloatRange(1.0f, 4.0f);
 #pragma warning restore 0649
 	#endregion // Serialized Fields
+
+	float next;
+	int index;
 	#endregion // Fields
 
 	#region Properties
 	#endregion // Properties
 
 	#region Mono
+	protected void Update()
+	{
+		next -= Time.deltaTime;
+
+		if(next <= 0.0f)
+		{
+			next = interval.GetRandom();
+
+			text.text = texts[index];
+
+			if(++index >= texts.Length)
+			{
+				index = 0;
+			}
+		}
+	}
 	#endregion // Mono
 
 	#region Methods
