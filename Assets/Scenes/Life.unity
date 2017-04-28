@@ -231,16 +231,18 @@ MonoBehaviour:
   texts:
   - Donkey Kong is dead
   - Vaporwave is dead
-  - Art is dead
-  - Gamers are dead
-  - Support the artists
+  - The world keeps turning
+  - life goes on
+  - 'Support the artists:'
   - "Nintendo owns DK\xA9 "
   - soundcpu.bandcamp.com
   - deathsdynamicshroud.bandcamp.com
+  - freesound.org
+  - google.com
   - '@SeruK_'
   interval:
-    min: 4
-    max: 4
+    min: 6
+    max: 6
 --- !u!1001 &1402751967
 Prefab:
   m_ObjectHideFlags: 0

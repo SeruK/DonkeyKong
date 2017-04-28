@@ -4368,7 +4368,7 @@ MonoBehaviour:
   music: {fileID: 11400000, guid: 2f775f7ae31297c438e4c80a7ca0f19b, type: 2}
   minPos: {x: -74.99, y: -1.5}
   maxPos: {x: 74.7, y: 3.8}
-  background: {fileID: 21300000, guid: f53dc0464e1f1f34395b785680955d71, type: 3}
+  background: {fileID: 21300000, guid: 0f1294852ac14f94ca46709194cd507d, type: 3}
   quitWhenMusicEnds: 0
 --- !u!1001 &685509987
 Prefab:

@@ -27,6 +27,7 @@ public sealed class ChangingText : MonoBehaviour
 
 	float next;
 	int index;
+	bool quitNext;
 	#endregion // Fields
 
 	#region Properties
@@ -39,14 +40,20 @@ public sealed class ChangingText : MonoBehaviour
 
 		if(next <= 0.0f)
 		{
+			if(quitNext)
+			{
+				Application.Quit();
+				return;
+			}
+
 			next = interval.GetRandom();
 
 			text.text = texts[index];
 
 			if(++index >= texts.Length)
 			{
+				quitNext = true;
 				index = 0;
-				Application.Quit();
 			}
 		}
 	}
