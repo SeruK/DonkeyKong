@@ -149,6 +149,9 @@ public sealed partial class App : AppBase
 		DontDestroyOnLoad(gameObject);
 
 		StartCoroutine(PostRenderRoutine());
+
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
 	}
 
 	protected void OnEnable()
@@ -215,6 +218,13 @@ public sealed partial class App : AppBase
 		{
 			currentAppState.AtUpdate();
 		}
+
+#if UNITY_EDITOR
+		if(Input.GetKeyDown(KeyCode.Escape))
+		{
+			Cursor.visible = true;
+		}
+#endif // UNITY_EDITOR
 	}
 
 	protected void LateUpdate()
