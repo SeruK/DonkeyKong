@@ -42,7 +42,8 @@ public sealed class ChangingText : MonoBehaviour
 		{
 			if(quitNext)
 			{
-				Application.Quit();
+				App.LoadScene("JungleHijinks");
+				//Application.Quit();
 				return;
 			}
 

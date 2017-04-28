@@ -81,6 +81,11 @@ public sealed partial class App : AppBase
 		soundManager.SystemUpdate();
 
 		coroutines.SystemUpdate();
+
+		if(Input.GetKeyDown(KeyCode.F12))
+		{
+			LoadScene("JungleHijinks");
+		}
 	}
 
 	protected override void AtPostRender()
