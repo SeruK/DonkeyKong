@@ -25,7 +25,7 @@ public static class Movie
 	#region Methods
 	public static IEnumerator LoadRoutine()
 	{
-		var www = new WWW("file://" + System.IO.Path.Combine(Application.streamingAssetsPath, "DonkeyKong2.ogg"));
+		var www = new WWW("file://" + System.IO.Path.Combine(Application.streamingAssetsPath, "DonkeyKong.ogg"));
 		if(!string.IsNullOrEmpty(www.error))
 		{
 			Dbg.LogError(www.error);
