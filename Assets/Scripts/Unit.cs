@@ -146,18 +146,22 @@ public sealed class Unit : MonoBehaviour
 		state.persistent.direction = dir;
 	}
 
-	public void DoUpdate()
+	public void DoUpdate(out bool hadInput)
 	{
 		state.momentary.Reset();
 
-		UpdateMovement();
+		UpdateMovement(out hadInput);
 		UpdateAnimation();
 	}
 
-	void UpdateMovement()
+	void UpdateMovement(out bool hadInput)
 	{
+		hadInput = false;
+
 		Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 		bool jump = Input.GetButtonDown("Jump");
+
+		hadInput = input.sqrMagnitude > 0.0f || jump;
 
 		if(Mathf.Abs(input.x) > 0.0f)
 		{
@@ -195,7 +199,7 @@ public sealed class Unit : MonoBehaviour
 		{
 			state.momentary.jumped = true;
 			state.persistent.canJump = false;
-			state.persistent.velocity.y += definition.jumpStrength;
+			state.persistent.velocity.y = definition.jumpStrength;
 		}
 
 		elements.controller.move(state.persistent.velocity * Time.deltaTime);

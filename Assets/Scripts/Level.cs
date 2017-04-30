@@ -29,7 +29,7 @@ public sealed class Level : MonoBehaviour
 	[SerializeField]
 	public Sprite background;
 	[SerializeField]
-	public bool quitWhenMusicEnds;
+	public bool restartIfNoInput;
 #pragma warning restore 0649
 	#endregion // Serialized Fields
 	#endregion // Fields

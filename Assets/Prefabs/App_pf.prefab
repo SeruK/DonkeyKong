@@ -67,6 +67,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
     pickups: {fileID: 11400000, guid: 933f70be803d3ad4b98f1124099da695, type: 2}
+    reloadSceneName: JungleHijinks
+    reloadSceneTime: 20
   prefabs:
     camera: {fileID: 114974127349121984, guid: 95c432620b00bee49b221df31607c6cb, type: 2}
   sounds: {fileID: 11400000, guid: e1abcd03a033ac54ea8522e1655364fa, type: 2}

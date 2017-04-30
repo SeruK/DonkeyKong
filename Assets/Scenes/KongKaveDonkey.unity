@@ -980,6 +980,7 @@ MonoBehaviour:
   minPos: {x: 0, y: 0}
   maxPos: {x: 0, y: 0}
   background: {fileID: 21300000, guid: 325b847f381ae7f4491d44448e484c5c, type: 3}
+  restartIfNoInput: 1
 --- !u!4 &1719537958
 Transform:
   m_ObjectHideFlags: 0
@@ -1231,6 +1232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: JungleHijinks
+  shouldPreloadMovie: 0
 --- !u!4 &2038865557
 Transform:
   m_ObjectHideFlags: 0
@@ -1242,5 +1244,5 @@ Transform:
   m_LocalScale: {x: 1, y: 17.954992, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

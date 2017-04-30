@@ -53,9 +53,11 @@ public sealed class MoviePlayer : GameSafeBehaviour
 
 		texture.texture = Movie.texture;
 
+		Movie.texture.Stop();
+
 		source.clip = Movie.texture.audioClip;
 		source.Play();
-        Movie.texture.Play();
+		Movie.texture.Play();
 
 		while(Movie.texture.isPlaying)
 		{

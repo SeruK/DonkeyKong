@@ -4369,7 +4369,7 @@ MonoBehaviour:
   minPos: {x: -74.99, y: -1.5}
   maxPos: {x: 74.7, y: 3.8}
   background: {fileID: 21300000, guid: 0f1294852ac14f94ca46709194cd507d, type: 3}
-  quitWhenMusicEnds: 0
+  restartIfNoInput: 1
 --- !u!1001 &685509987
 Prefab:
   m_ObjectHideFlags: 0

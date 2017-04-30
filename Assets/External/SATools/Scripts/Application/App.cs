@@ -224,6 +224,14 @@ public sealed partial class App : AppBase
 		{
 			Cursor.visible = true;
 		}
+		if(Input.GetKeyDown(KeyCode.F10))
+		{
+			App.LoadScene("Movie");
+		}
+			if(Input.GetKeyDown(KeyCode.F11))
+		{
+			App.LoadScene(SceneManager.GetActiveScene().name);
+		}
 #endif // UNITY_EDITOR
 	}
 

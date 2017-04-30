@@ -13,6 +13,11 @@ public sealed partial class Game : GameBase
 	class Settings
 	{
 		public PickupSettings pickups;
+
+		[SerializeField]
+		public string reloadSceneName;
+		[SerializeField]
+		public float reloadSceneTime = 20.0f;
 	}
 
 	[Serializable]
@@ -50,6 +55,8 @@ public sealed partial class Game : GameBase
 	string loadScene;
 	[NonSerialized]
 	SoundHandle musicSfx;
+	[NonSerialized]
+	float noInputTimer;
 	#endregion // Fields
 
 	#region Properties
@@ -85,6 +92,8 @@ public sealed partial class Game : GameBase
 		{
 			SetupWithLevel(level);
 		}
+
+		noInputTimer = settings.reloadSceneTime;
 	}
 
 	void SetupWithLevel(Level level)
@@ -129,9 +138,26 @@ public sealed partial class Game : GameBase
 
 	public override void AtUpdate()
 	{
+		bool hadInput = false; ;
+
 		if(player != null)
 		{
-			player.DoUpdate();
+			player.DoUpdate(out hadInput);
+        }
+
+		if(level != null && level.restartIfNoInput)
+		{
+			if(hadInput)
+			{
+				noInputTimer = settings.reloadSceneTime;
+			}
+
+			noInputTimer -= Time.deltaTime;
+
+			if(noInputTimer <= 0.0f)
+			{
+				loadScene = settings.reloadSceneName;
+			}
 		}
 
 		SpriteAnimator.SystemUpdate();
